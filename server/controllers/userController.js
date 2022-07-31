@@ -1,3 +1,5 @@
+const apiErrorHandler = require('../helpers/apiErrorHandler');
+
 class UserController {
   async signup(req, res) {
 
@@ -7,9 +9,16 @@ class UserController {
 
   }
 
-  async checkAuth(req, res) {
-    const query = req.query;
-    res.json(query);
+  async checkAuth(req, res, next) {
+    const { id } = req.query;
+
+    if (!id) {
+      return next(apiErrorHandler.badRequest('Не передан id пользователя'));
+    }
+
+    res.json({
+      userId: id
+    });
   }
 }
 

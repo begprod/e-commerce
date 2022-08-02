@@ -1,12 +1,12 @@
 const uuid = require('uuid');
 const path = require('path');
-const { Device } = require('../models/models');
+const { Device, DeviceInfo } = require('../models/models');
 const apiErrorHandler = require('../helpers/apiErrorHandler');
 
 class DeviceController {
   async create(req, res, next) {
     try {
-      const { name, price, typeId, brandId, info } = req.body;
+      let { name, price, typeId, brandId, info } = req.body;
       const { img } = req.files;
       let fileName = `${uuid.v4()}.jpg`;
 
@@ -19,6 +19,18 @@ class DeviceController {
         brandId,
         img: fileName,
       });
+
+      if (info) {
+        info = JSON.parse(info);
+
+        info.forEach((i) =>
+          DeviceInfo.create({
+            title: i.title,
+            description: i.description,
+            deviceId: device.id,
+          })
+        );
+      }
 
       return res.json(device);
     } catch (err) {
@@ -70,7 +82,14 @@ class DeviceController {
   }
 
   async getOne(req, res) {
+    const { id } = req.params;
 
+    const device = await Device.findOne({
+      where: { id },
+      include: [{ model: DeviceInfo, as: 'info' }],
+    });
+
+    return res.json(device);
   }
 }
 

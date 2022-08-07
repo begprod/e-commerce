@@ -45,7 +45,7 @@ class UserController {
     const { email, password } = req.body;
     const user = await User.findOne({
       where: { email }
-    });s
+    });
 
     if (!user) {
       return next(apiErrorHandler.badRequest('Пользователь с таким email не найден'));
@@ -65,7 +65,11 @@ class UserController {
   }
 
   async checkAuth(req, res, next) {
+    const token = generateToken(req.user.id, req.user.email, req.user.role);
 
+    return res.json({
+      token
+    });
   }
 }
 

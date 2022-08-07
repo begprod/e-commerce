@@ -65,7 +65,7 @@ class UserController {
   }
 
   async checkAuth(req, res, next) {
-    
+
   }
 }
 

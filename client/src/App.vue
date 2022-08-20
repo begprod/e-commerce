@@ -1,33 +1,50 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/detail/1">Detail</router-link> |
-    <router-link to="/signup">Sign up</router-link> |
-    <router-link to="/cart/1">Cart</router-link> |
-    <router-link to="/admin">Admin</router-link> |
-  </nav>
-  <router-view/>
+  <BaseHeader/>
+  <main>
+    <div class="container">
+      <router-view/>
+    </div>
+  </main>
+  <BaseFooter/>
 </template>
 
-<style lang="scss">
-#app {
+<script setup>
+import BaseHeader from '@/components/partials/BaseHeader.vue';
+import BaseFooter from '@/components/partials/BaseFooter.vue';
+</script>
+
+<style>
+html {
+  box-sizing: border-box;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-nav {
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container {
   padding: 30px;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+img {
+  max-width: 100%;
 }
 </style>

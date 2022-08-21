@@ -2,6 +2,6 @@
   <h1>HomePage</h1>
 </template>
 
-<script>
+<script setup>
 // @ is an alias to /src
 </script>

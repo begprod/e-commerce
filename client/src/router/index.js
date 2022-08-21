@@ -7,8 +7,6 @@ import auth from './middleware/auth';
 
 import HomeView from '../views/HomeView.vue';
 
-console.log(store);
-
 const routes = [
   {
     path: '/',

@@ -1,18 +1,8 @@
 import { createStore } from 'vuex';
+import auth from './modules/auth';
 
 export default createStore({
-  state: {
-    user: {
-      isLoggedIn: false,
-    },
-  },
-  getters: {
-    isLoggedIn: (state) => state.user.isLoggedIn,
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
+    auth,
   },
 });

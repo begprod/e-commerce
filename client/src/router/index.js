@@ -12,11 +12,6 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    meta: {
-      middleware: [
-        guest,
-      ],
-    },
   },
   {
     path: '/signup',
@@ -32,11 +27,6 @@ const routes = [
     path: '/detail/:deviceId',
     name: 'device-detail',
     component: () => import(/* webpackChunkName: "device-detail" */ '../views/DeviceDetailPageView.vue'),
-    meta: {
-      middleware: [
-        guest,
-      ],
-    },
   },
   {
     path: '/cart/:userId',
@@ -66,7 +56,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes,
 });
 
@@ -83,6 +73,7 @@ router.beforeEach((to, from, next) => {
     next,
     store,
   };
+
   return middleware[0]({
     ...context,
     next: middlewarePipeline(context, middleware, 1),

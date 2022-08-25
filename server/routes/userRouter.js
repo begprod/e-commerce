@@ -8,8 +8,8 @@ router.post('/signup', userController.signup);
 router.post('/login', userController.login);
 router.get('/auth', authMiddleware, userController.checkAuth);
 // cart
-router.get('/cart/:userId', cartController.getCart);
-router.post('/add-to-cart/:userId', cartController.addToCart);
-router.delete('/delete-from-cart/:cartId', cartController.deleteFromCart);
+router.get('/cart/:userId', authMiddleware, cartController.getCart);
+router.post('/add-to-cart/:userId', authMiddleware, cartController.addToCart);
+router.delete('/delete-from-cart/', authMiddleware, cartController.deleteFromCart);
 
 module.exports = router;

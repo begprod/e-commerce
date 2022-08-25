@@ -24,10 +24,12 @@ class CartController {
   };
 
   async deleteFromCart(req, res) {
-    const { cartId } = req.params;
+    const { cartId, deviceId } = req.body;
+    console.log(cartId, deviceId);
     const cartDevice = await CartDevice.findOne({
-      where: { cartId }
+      where: { cartId, deviceId }
     });
+
     await cartDevice.destroy();
 
     return res.json(cartDevice);

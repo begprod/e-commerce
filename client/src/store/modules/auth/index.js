@@ -1,11 +1,11 @@
-import actions from './actions';
-import getters from './getters';
-import mutations from './mutations';
+import actions from '@/store/modules/auth/actions';
+import getters from '@/store/modules/auth/getters';
+import mutations from '@/store/modules/auth/mutations';
 
 export const namespaced = true;
 
 export const state = {
-  authenticated: true,
+  authenticated: false,
 };
 
 export default {

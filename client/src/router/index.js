@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import store from '../store';
-import middlewarePipeline from './middlewarePipeline';
+import store from '@/store';
+import middlewarePipeline from '@/router/middlewarePipeline';
 
-import guest from './middleware/guest';
-import auth from './middleware/auth';
+import guest from '@/router/middleware/guest';
+import auth from '@/router/middleware/auth';
 
-import HomeView from '../views/HomeView.vue';
+import HomeView from '@/views/HomeView.vue';
 
 const routes = [
   {

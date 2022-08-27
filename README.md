@@ -1,4 +1,4 @@
-# Online Store
+# Online Store Fullstack Project
 
 ## Backend
 
@@ -11,11 +11,17 @@
 
 - Axios
 - Vue 3
-- Vuex
 - Vue Router
+- Pinia
 
 ## Server
 
 `cd server`
 
 `npm run dev`
+
+## Frontend Server
+
+`cd client`
+
+`npm run serve`

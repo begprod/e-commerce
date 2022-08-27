@@ -36,7 +36,7 @@ const routes = [
   {
     path: '/detail/:deviceId',
     name: 'device-detail',
-    component: () => import(/* webpackChunkName: "device-detail" */ '../views/DeviceDetailPageView.vue'),
+    component: () => import(/* webpackChunkName: "product-detail" */ '../views/ProductDetailView.vue'),
   },
   {
     path: '/cart/:userId',

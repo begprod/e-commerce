@@ -32,7 +32,12 @@
 </template>
 
 <script setup>
+import { useMeta } from 'vue-meta';
 import BaseFormWrapper from '@/components/ui/BaseFormWrapper.vue';
 import BaseInput from '@/components/ui/BaseInput.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
+
+useMeta({
+  title: 'Sign up',
+});
 </script>

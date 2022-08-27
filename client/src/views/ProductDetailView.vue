@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This is Cart page view</h1>
+    <h1>This is Product Detail page view</h1>
   </div>
 </template>
 
@@ -8,6 +8,6 @@
 import { useMeta } from 'vue-meta';
 
 useMeta({
-  title: 'Cart',
+  title: 'Product Detail',
 });
 </script>

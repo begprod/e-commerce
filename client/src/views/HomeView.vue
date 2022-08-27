@@ -10,7 +10,11 @@
 </template>
 
 <script setup>
-// @ is an alias to /src
+import { useMeta } from 'vue-meta';
 import BaseCardGrid from '@/components/ui/BaseCardGrid.vue';
 import BaseCard from '@/components/ui/BaseCard.vue';
+
+useMeta({
+  title: 'HomePage',
+});
 </script>

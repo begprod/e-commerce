@@ -1,23 +1,19 @@
 <template>
   <div class="header">
-    <div class="header__inner">
-      <div class="header__item header__item_align-left">
-        <div class="header__logo">
-          <img src="@/assets/logo.png" alt="logo">
-        </div>
-      </div>
+    <router-link
+      to="/"
+      class="header__logo"
+    >
+      <img src="@/assets/logo.png" alt="logo">
+    </router-link>
 
-      <div class="header__item">
-        <BaseNavigation/>
-      </div>
+    <BaseNavigation/>
 
-      <div
-        v-if="isAuthenticated"
-        class="header__item header__item_align-right"
-      >
-        <router-link to="/cart/1">Cart</router-link>
-      </div>
-    </div>
+    <router-link
+      v-if="isAuthenticated"
+      to="/cart/1">
+      Cart
+    </router-link>
   </div>
 </template>
 
@@ -31,28 +27,12 @@ const isAuthenticated = computed(() => userStore().isAuthenticated);
 
 <style lang="postcss" scoped>
 .header {
-  border-bottom: 1px solid #ccc;
-}
-
-.header__inner {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  padding: 0 30px;
-}
-
-.header__item {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.header__item_align-left {
-  justify-content: flex-start;
-}
-
-.header__item_align-right {
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 0 40px;
+  min-height: 80px;
+  border-bottom: 1px solid #ccc;
 }
 
 .header__logo {

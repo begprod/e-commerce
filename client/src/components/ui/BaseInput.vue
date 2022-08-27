@@ -1,16 +1,22 @@
 <template>
-<div class="input">
+<div
+  class="input"
+>
   <label
     :for="id"
     class="input__label"
   >
-    <span>{{ label }}</span>
+    <span>
+      {{ label }}
+      {{ required ? '– required' : '' }}
+    </span>
     <input
       :id="id"
       :type="type"
       :value="modelValue"
       @input="updateInput"
       class="input__field"
+      :required="required"
     />
   </label>
 </div>
@@ -32,6 +38,11 @@ defineProps({
   label: {
     type: String,
     required: true,
+  },
+  required: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
   modelValue: {
     type: [String, Number],
@@ -71,5 +82,19 @@ const updateInput = (event) => {
   padding: 0 10px;
   font-size: 18px;
   outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input__field:hover,
+.input__field:focus {
+  border: 1px solid #aaa;
+}
+
+.input__field:focus:invalid {
+  border: 1px solid #f00;
+}
+
+.input__field:valid {
+  border: 1px solid #40b883;
 }
 </style>

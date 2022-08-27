@@ -35,5 +35,10 @@ defineProps({
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #2f9c68;
 }
 </style>

@@ -47,4 +47,27 @@ main {
 img {
   max-width: 100%;
 }
+
+a {
+  font-weight: bold;
+  color: dodgerblue;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:last-child {
+  margin-right: 0;
+}
+
+a:visited {
+  color: dodgerblue;
+}
+
+a.router-link-exact-active {
+  color: #42b983;
+}
+
+a:hover {
+  color: cornflowerblue;
+}
 </style>

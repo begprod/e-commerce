@@ -14,9 +14,19 @@ const routes = [
     component: HomeView,
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/SignInView.vue'),
+    meta: {
+      middleware: [
+        guest,
+      ],
+    },
+  },
+  {
     path: '/signup',
     name: 'signup',
-    component: () => import(/* webpackChunkName: "auth" */ '../views/AuthView.vue'),
+    component: () => import(/* webpackChunkName: "signup" */ '../views/SignUpView.vue'),
     meta: {
       middleware: [
         guest,

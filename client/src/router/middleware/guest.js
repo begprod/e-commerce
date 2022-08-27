@@ -1,5 +1,5 @@
-export default function guest({ store, next }) {
-  if (store.getters['auth/isAuthenticated']) {
+export default function guest({ userStore, next }) {
+  if (userStore().isAuthenticated) {
     next({ name: 'home' });
   } else {
     next();

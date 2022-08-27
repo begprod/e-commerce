@@ -2,7 +2,7 @@
   <nav>
     <router-link to="/">Home</router-link>
     <router-link
-      v-if="!isLoggedIn"
+      v-if="!isAuthenticated"
       to="/login">
       Sign in
     </router-link>
@@ -17,11 +17,10 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useStore } from 'vuex';
+import userStore from '@/stores/user';
 
-const store = useStore();
-const isLoggedIn = computed(() => store.getters['auth/isAuthenticated']);
-const isAdmin = computed(() => store.getters['auth/user'].role === 'ADMIN');
+const isAuthenticated = computed(() => userStore().isAuthenticated);
+const isAdmin = computed(() => userStore().isAdmin);
 </script>
 
 <style lang="postcss" scoped>

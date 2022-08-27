@@ -12,7 +12,7 @@
       </div>
 
       <div
-        v-if="isLoggedIn"
+        v-if="isAuthenticated"
         class="header__item header__item_align-right"
       >
         <router-link to="/cart/1">Cart</router-link>
@@ -23,11 +23,10 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useStore } from 'vuex';
+import userStore from '@/stores/user';
 import BaseNavigation from '@/components/partials/BaseNavigation.vue';
 
-const store = useStore();
-const isLoggedIn = computed(() => store.getters['auth/isAuthenticated']);
+const isAuthenticated = computed(() => userStore().isAuthenticated);
 </script>
 
 <style lang="postcss" scoped>

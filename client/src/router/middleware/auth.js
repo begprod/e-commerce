@@ -1,5 +1,5 @@
-export default function auth({ store, next }) {
-  if (!store.getters['auth/isAuthenticated']) {
+export default function auth({ userStore, next }) {
+  if (!userStore().isAuthenticated) {
     next({ name: 'signup' });
   } else {
     next();

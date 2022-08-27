@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import store from '@/store';
+import userStore from '@/stores/user';
 import middlewarePipeline from '@/router/middlewarePipeline';
 
 import guest from '@/router/middleware/guest';
@@ -81,7 +81,7 @@ router.beforeEach((to, from, next) => {
     to,
     from,
     next,
-    store,
+    userStore,
   };
 
   return middleware[0]({

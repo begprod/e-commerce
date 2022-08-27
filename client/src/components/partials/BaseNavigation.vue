@@ -1,24 +1,55 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/detail/1">Detail</router-link> |
-    <router-link to="/signup">Sign up</router-link> |
-<!--TODO: show if user is logged in and role is admin-->
-    <router-link to="/admin">Admin</router-link> |
+    <router-link to="/">Home</router-link>
+    <router-link
+      v-if="!isLoggedIn"
+      to="/signup">
+      Login
+    </router-link>
+    <router-link
+      v-if="isAdmin"
+      to="/admin"
+    >
+      Admin panel
+    </router-link>
   </nav>
 </template>
+
+<script setup>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const isLoggedIn = computed(() => store.getters['auth/isAuthenticated']);
+const isAdmin = computed(() => store.getters['auth/user'].role === 'ADMIN');
+</script>
 
 <style lang="postcss" scoped>
 nav {
   padding: 30px;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+a {
+  margin-right: 30px;
+  font-weight: bold;
+  color: dodgerblue;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+a:last-child {
+  margin-right: 0;
+}
+
+a:visited {
+  color: dodgerblue;
+}
+
+a.router-link-exact-active {
+  color: #42b983;
+}
+
+a:hover {
+  color: cornflowerblue;
 }
 </style>

@@ -11,10 +11,6 @@
 
 <script setup>
 // @ is an alias to /src
-import { useStore } from 'vuex';
 import BaseCardGrid from '@/components/ui/BaseCardGrid.vue';
 import BaseCard from '@/components/ui/BaseCard.vue';
-
-const store = useStore();
-console.log(store.getters['auth/isAuthenticated']);
 </script>

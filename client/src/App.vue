@@ -41,7 +41,7 @@ main {
 }
 
 .container {
-  padding: 30px;
+  padding: 40px 40px 80px 40px;
 }
 
 img {

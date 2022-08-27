@@ -6,6 +6,10 @@ export const namespaced = true;
 
 export const state = {
   authenticated: false,
+  user: {
+    email: 'test@test.test',
+    role: 'USER',
+  },
 };
 
 export default {

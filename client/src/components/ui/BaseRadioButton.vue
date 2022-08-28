@@ -57,4 +57,5 @@ const onClick = (event) => {
 </script>
 
 <style lang="postcss" scoped>
+/* TODO: add styles */
 </style>

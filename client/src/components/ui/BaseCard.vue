@@ -1,23 +1,37 @@
 <template>
   <div class="card">
     <div class="card__image">
-      <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-collection-5_large.png?format=jpg&quality=90&v=1530129199" alt="">
+      <img
+        :src="img"
+        :alt="name">
     </div>
     <div class="card__content">
-      <div class="card__title">
-        name
+      <div class="card__name">
+        {{ name }}
       </div>
       <div class="card__price">
-        price
+        {{ price }}
       </div>
     </div>
+<!--  TODO: add to card button  -->
   </div>
 </template>
 
 <script setup>
-// name
-// img
-// price
+defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: String,
+    required: true,
+  },
+  img: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <style lang="postcss" scoped>
@@ -31,15 +45,18 @@
 }
 
 .card__image {
+  width: 100%;
+  max-height: 300px;
   margin-bottom: 10px;
   padding: 20px;
+  text-align: center;
   background-color: #ececec;
+}
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.card__image img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
 }
 
 .card__content {
@@ -47,7 +64,7 @@
   text-align: left;
 }
 
-.card__title {
+.card__name {
   font-size: 20px;
   font-weight: bold;
 }

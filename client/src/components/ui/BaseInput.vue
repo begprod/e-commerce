@@ -14,9 +14,9 @@
       :id="id"
       :type="type"
       :value="modelValue"
+      :required="required"
       @input="updateInput"
       class="input__field"
-      :required="required"
     />
   </label>
 </div>
@@ -51,7 +51,6 @@ defineProps({
 const emit = defineEmits(['update:modelValue']);
 
 const updateInput = (event) => {
-  console.log(event.target.value);
   const { value } = event.target;
 
   emit('update:modelValue', value);

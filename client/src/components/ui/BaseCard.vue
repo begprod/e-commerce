@@ -24,7 +24,7 @@ defineProps({
     required: true,
   },
   price: {
-    type: String,
+    type: [String, Number],
     required: true,
   },
   img: {

@@ -57,7 +57,6 @@ const onClick = (event) => {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 0.5rem;
 }
 
 .radio__label {

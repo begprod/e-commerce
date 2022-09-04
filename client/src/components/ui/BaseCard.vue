@@ -51,31 +51,31 @@ defineProps({
 .card {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  align-items: center;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 .card__image {
-  width: 100%;
-  max-height: 300px;
   margin-bottom: 10px;
   padding: 20px;
+  width: 100%;
+  max-height: 300px;
   text-align: center;
   background-color: #ececec;
 }
 
 .card__image img {
-  max-height: 100%;
   max-width: 100%;
+  max-height: 100%;
   object-fit: cover;
 }
 
 .card__content {
   width: 100%;
   text-align: left;
-  color: #000;
+  color: #000000;
 }
 
 .card__name {

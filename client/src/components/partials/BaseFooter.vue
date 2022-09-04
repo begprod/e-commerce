@@ -12,11 +12,11 @@ const year = new Date().getFullYear();
 
 <style lang="postcss" scoped>
 .footer {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #cccccc;
 }
 
 .footer__inner {
-  text-align: center;
   padding: 15px 30px;
+  text-align: center;
 }
 </style>

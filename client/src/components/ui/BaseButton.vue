@@ -28,14 +28,14 @@ defineProps({
   align-items: center;
   width: 100%;
   height: 40px;
-  border: none;
-  border-radius: 4px;
-  background-color: #40b883;
-  color: #fff;
   font-size: 14px;
   font-weight: bold;
+  color: #ffffff;
+  background-color: #40b883;
+  border: none;
+  border-radius: 4px;
+  transition: background-color .3s ease-in-out;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
 }
 
 .button:hover {

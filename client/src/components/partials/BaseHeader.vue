@@ -28,11 +28,11 @@ const isAuthenticated = computed(() => useUserStore().isAuthenticated);
 <style lang="postcss" scoped>
 .header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 0 40px;
   min-height: 80px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #cccccc;
 }
 
 .header__logo {

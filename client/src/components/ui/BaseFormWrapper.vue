@@ -14,10 +14,10 @@
 
 <style lang="postcss" scoped>
 .form {
-  max-width: 600px;
   margin: 0 auto;
   padding: 30px;
-  border: 1px solid #ccc;
+  max-width: 600px;
+  border: 1px solid #cccccc;
   border-radius: 5px;
 }
 

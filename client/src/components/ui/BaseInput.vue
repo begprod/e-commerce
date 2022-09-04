@@ -65,33 +65,33 @@ const updateInput = (event) => {
 .input__label {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: flex-start;
+  align-items: flex-start;
   margin-bottom: 10px;
   font-size: 16px;
 }
 
 .input__field {
+  padding: 0 10px;
   width: 100%;
   height: 40px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 0 10px;
   font-size: 18px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
   outline: none;
-  transition: border-color 0.3s ease-in-out;
+  transition: border-color .3s ease-in-out;
 }
 
 .input__field:hover,
 .input__field:focus {
-  border: 1px solid #aaa;
-}
-
-.input__field:focus:invalid {
-  border: 1px solid #f00;
+  border: 1px solid #aaaaaa;
 }
 
 .input__field:valid {
   border: 1px solid #40b883;
+}
+
+.input__field:focus:invalid {
+  border: 1px solid #ff0000;
 }
 </style>

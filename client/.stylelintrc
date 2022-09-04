@@ -131,6 +131,9 @@
         "media-feature-colon-space-before": "never",
         "media-feature-colon-space-after": "always",
         "at-rule-no-unknown": null,
-        "selector-class-pattern": null
+        "selector-class-pattern": null,
+        "selector-pseudo-class-no-unknown": [true, {
+            "ignorePseudoClasses": ["deep"]
+        }]
     }
 }

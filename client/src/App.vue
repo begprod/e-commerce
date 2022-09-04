@@ -29,7 +29,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-*, *:before, *:after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -49,7 +51,7 @@ main {
 }
 
 .container {
-  padding: 40px 40px 80px 40px;
+  padding: 40px 40px 80px;
 }
 
 img {
@@ -58,9 +60,9 @@ img {
 
 a {
   font-weight: bold;
-  color: dodgerblue;
   text-decoration: none;
-  transition: color 0.3s ease-in-out;
+  color: dodgerblue;
+  transition: color .3s ease-in-out;
 }
 
 a:last-child {

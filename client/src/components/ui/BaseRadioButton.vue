@@ -55,31 +55,31 @@ const onClick = (event) => {
 <style lang="postcss" scoped>
 .radio {
   display: flex;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
 }
 
 .radio__label {
   padding: 8px 16px;
-  background-color: #e4e4e4;
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.6);
-  text-align: center;
   line-height: 1;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: rgb(0 0 0 / 60%);
+  background-color: #e4e4e4;
+  border: 1px solid rgb(0 0 0 / 20%);
   border-radius: 5px;
   box-shadow: inset 0 1px 3px rgb(0 0 0 / 30%), 0 1px rgb(255 255 255 / 10%);
-  transition: all 0.1s ease-in-out;
+  transition: all .1s ease-in-out;
   cursor: pointer;
 }
 
 .radio__input {
   position: absolute !important;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  width: 1px;
-  border: 0;
   overflow: hidden;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
 }
 
 .radio__input:checked + .radio__label {

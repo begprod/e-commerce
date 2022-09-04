@@ -1,5 +1,9 @@
 <template>
-  <div class="card">
+  <component
+    :is="tag"
+    :to="to"
+    class="card"
+  >
     <div class="card__image">
       <img
         :src="img"
@@ -14,7 +18,7 @@
       </div>
     </div>
 <!--  TODO: add to card button  -->
-  </div>
+  </component>
 </template>
 
 <script setup>
@@ -30,6 +34,15 @@ defineProps({
   img: {
     type: String,
     required: true,
+  },
+  tag: {
+    type: String,
+    required: false,
+    default: 'div',
+  },
+  to: {
+    type: Object,
+    required: false,
   },
 });
 </script>
@@ -62,6 +75,7 @@ defineProps({
 .card__content {
   width: 100%;
   text-align: left;
+  color: #000;
 }
 
 .card__name {

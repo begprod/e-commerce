@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-const userStore = defineStore('user', {
+const useuUserStore = defineStore('user', {
   state: () => ({
     user: {
       email: 'test@test.test',
@@ -18,4 +18,4 @@ const userStore = defineStore('user', {
   },
 });
 
-export default userStore;
+export default useuUserStore;

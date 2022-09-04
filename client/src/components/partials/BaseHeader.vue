@@ -19,10 +19,10 @@
 
 <script setup>
 import { computed } from 'vue';
-import userStore from '@/stores/user';
+import useUserStore from '@/stores/user';
 import BaseNavigation from '@/components/partials/BaseNavigation.vue';
 
-const isAuthenticated = computed(() => userStore().isAuthenticated);
+const isAuthenticated = computed(() => useUserStore().isAuthenticated);
 </script>
 
 <style lang="postcss" scoped>

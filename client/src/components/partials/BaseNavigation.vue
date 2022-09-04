@@ -16,10 +16,10 @@
 
 <script setup>
 import { computed } from 'vue';
-import userStore from '@/stores/user';
+import useUserStore from '@/stores/user';
 
-const isAuthenticated = computed(() => userStore().isAuthenticated);
-const isAdmin = computed(() => userStore().isAdmin);
+const isAuthenticated = computed(() => useUserStore().isAuthenticated);
+const isAdmin = computed(() => useUserStore().isAdmin);
 </script>
 
 <style lang="postcss" scoped>

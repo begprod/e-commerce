@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-const productsStore = defineStore('products', {
+const useProductsStore = defineStore('products', {
   state: () => ({
     products: [
       {
@@ -68,7 +68,14 @@ const productsStore = defineStore('products', {
     currentType: null,
   }),
 
-  actions: {},
+  actions: {
+    setCurrentBrand(brand) {
+      this.currentBrand = brand;
+    },
+    setCurrentType(type) {
+      this.currentType = type;
+    },
+  },
 
   getters: {
     getProducts: (state) => state.products,
@@ -79,4 +86,4 @@ const productsStore = defineStore('products', {
   },
 });
 
-export default productsStore;
+export default useProductsStore;

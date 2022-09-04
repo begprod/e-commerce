@@ -9,6 +9,7 @@
       :id="type.name"
       :value="type.name"
       :label="type.name"
+      @click="setCurrentType(type)"
       name="type"
     />
   </BaseBar>
@@ -21,23 +22,31 @@
       :id="brand.name"
       :value="brand.name"
       :label="brand.name"
+      @click="setCurrentBrand(brand)"
       name="brand"
     />
   </BaseBar>
   <BaseCardGrid>
-    <BaseCard
-      v-for="(product) in products"
-      :key="product.id"
-      :name="product.name"
-      :price="product.price"
-      :img="product.img"
-    />
+      <BaseCard
+        v-for="(product) in products"
+        :name="product.name"
+        :price="product.price"
+        :img="product.img"
+        :key="product.id"
+        :to="{
+          name: 'device-detail',
+          params: {
+            deviceId: product.id,
+          },
+        }"
+        tag="router-link"
+      />
   </BaseCardGrid>
 </template>
 
 <script setup>
 import { useMeta } from 'vue-meta';
-import productStore from '@/stores/products';
+import useProductStore from '@/stores/products';
 import BaseBar from '@/components/ui/BaseBar.vue';
 import BaseRadioButton from '@/components/ui/BaseRadioButton.vue';
 import BaseCardGrid from '@/components/ui/BaseCardGrid.vue';
@@ -47,7 +56,10 @@ useMeta({
   title: 'HomePage',
 });
 
-const products = productStore().getProducts;
-const types = productStore().getTypes;
-const brands = productStore().getBrands;
+const products = useProductStore().getProducts;
+const types = useProductStore().getTypes;
+const brands = useProductStore().getBrands;
+
+const { setCurrentType } = useProductStore();
+const { setCurrentBrand } = useProductStore();
 </script>

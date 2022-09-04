@@ -21,7 +21,7 @@ defineProps({
 });
 </script>
 
-<style>
+<style lang="postcss" scoped>
 .button {
   display: flex;
   justify-content: center;
@@ -30,15 +30,15 @@ defineProps({
   height: 40px;
   font-size: 14px;
   font-weight: bold;
-  color: #ffffff;
-  background-color: #40b883;
+  color: var(--color-white);
+  background-color: var(--color-green);
   border: none;
   border-radius: 4px;
-  transition: background-color .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #2f9c68;
+  opacity: .9;
 }
 </style>

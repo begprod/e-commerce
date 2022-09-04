@@ -63,7 +63,7 @@ defineProps({
   width: 100%;
   max-height: 300px;
   text-align: center;
-  background-color: #ececec;
+  background-color: var(--color-gray-light);
 }
 
 .card__image img {
@@ -75,7 +75,7 @@ defineProps({
 .card__content {
   width: 100%;
   text-align: left;
-  color: #000000;
+  color: var(--color-black);
 }
 
 .card__name {

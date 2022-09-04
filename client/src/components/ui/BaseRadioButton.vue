@@ -65,10 +65,8 @@ const onClick = (event) => {
   line-height: 1;
   text-align: center;
   color: rgb(0 0 0 / 60%);
-  background-color: #e4e4e4;
   border: 1px solid rgb(0 0 0 / 20%);
   border-radius: 5px;
-  box-shadow: inset 0 1px 3px rgb(0 0 0 / 30%), 0 1px rgb(255 255 255 / 10%);
   transition: all .1s ease-in-out;
   cursor: pointer;
 }
@@ -82,8 +80,12 @@ const onClick = (event) => {
   clip: rect(0, 0, 0, 0);
 }
 
+.radio__input:focus + .radio__label {
+  border-color: var(--color-green);
+}
+
 .radio__input:checked + .radio__label {
   color: white;
-  background-color: #42b983;
+  background-color: var(--color-green);
 }
 </style>

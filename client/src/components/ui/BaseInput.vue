@@ -57,7 +57,7 @@ const updateInput = (event) => {
 };
 </script>
 
-<style>
+<style lang="postcss" scoped>
 .input {
   margin-bottom: 20px;
 }
@@ -76,7 +76,7 @@ const updateInput = (event) => {
   width: 100%;
   height: 40px;
   font-size: 18px;
-  border: 1px solid #cccccc;
+  border: 1px solid var(--color-gray);
   border-radius: 4px;
   outline: none;
   transition: border-color .3s ease-in-out;
@@ -84,14 +84,14 @@ const updateInput = (event) => {
 
 .input__field:hover,
 .input__field:focus {
-  border: 1px solid #aaaaaa;
+  border: 1px solid var(--color-gray-dark);
 }
 
 .input__field:valid {
-  border: 1px solid #40b883;
+  border: 1px solid var(--color-green);
 }
 
 .input__field:focus:invalid {
-  border: 1px solid #ff0000;
+  border: 1px solid var(--color-red);
 }
 </style>

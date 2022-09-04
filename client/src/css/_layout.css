@@ -1,0 +1,13 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container {
+  padding: 40px 40px 80px;
+}

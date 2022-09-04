@@ -17,7 +17,7 @@
   margin: 0 auto;
   padding: 30px;
   max-width: 600px;
-  border: 1px solid #cccccc;
+  border: 1px solid var(--color-gray);
   border-radius: 5px;
 }
 

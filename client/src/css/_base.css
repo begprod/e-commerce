@@ -1,0 +1,44 @@
+html {
+  box-sizing: border-box;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  color: dodgerblue;
+  transition: color .3s ease-in-out;
+}
+
+a:last-child {
+  margin-right: 0;
+}
+
+a:visited {
+  color: dodgerblue;
+}
+
+a.router-link-exact-active {
+  color: #42b983;
+}
+
+a:hover {
+  color: cornflowerblue;
+}

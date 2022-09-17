@@ -74,24 +74,33 @@
           />
         </fieldset>
         <fieldset>
-          <BaseInput
+          <BaseSelect
             id="typeId"
-            type="number"
-            label="Type ID"
             name="typeId"
+            label="Type"
             required
-          />
+          >
+            <option value="">Select type</option>
+            <option value="1" label="Phone">Phone</option>
+            <option value="2" label="Laptop">Laptop</option>
+            <option value="3" label="Tablet">Tablet</option>
+          </BaseSelect>
         </fieldset>
         <fieldset>
-          <BaseInput
+          <BaseSelect
             id="brandId"
-            type="number"
-            label="brand ID"
             name="brandId"
+            label="Brand"
             required
-          />
+          >
+            <option value="">Select brand</option>
+            <option value="1" label="Apple">Apple</option>
+            <option value="2" label="Samsung">Samsung</option>
+            <option value="3" label="Xiaomi">Xiaomi</option>
+          </BaseSelect>
         </fieldset>
         <fieldset>
+<!--    TODO: добавить стили для type="file"      -->
           <BaseInput
             id="img"
             type="file"
@@ -115,6 +124,7 @@
 import { useMeta } from 'vue-meta';
 import BaseFormWrapper from '@/components/ui/forms/BaseFormWrapper.vue';
 import BaseInput from '@/components/ui/forms/BaseInput.vue';
+import BaseSelect from '@/components/ui/forms/BaseSelect.vue';
 import BaseButton from '@/components/ui/forms/BaseButton.vue';
 
 useMeta({

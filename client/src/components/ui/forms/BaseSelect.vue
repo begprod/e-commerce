@@ -1,26 +1,21 @@
 <template>
-<div
-  class="input"
->
-  <label
-    :for="id"
-    class="input__label"
-  >
-    <span>
+  <div class="select">
+    <label
+      class="select__label"
+      :for="id"
+    >
       {{ label }}
       {{ required ? '– required' : '' }}
-    </span>
-    <input
+    </label>
+    <select
+      class="select__field"
       :id="id"
-      :type="type"
       :name="name"
-      :value="modelValue"
       :required="required"
-      @input="updateInput"
-      class="input__field"
-    />
-  </label>
-</div>
+    >
+      <slot />
+    </select>
+  </div>
 </template>
 
 <script setup>
@@ -28,11 +23,6 @@ defineProps({
   id: {
     type: String,
     required: true,
-  },
-  type: {
-    type: String,
-    required: false,
-    default: 'text',
   },
   name: {
     type: String,
@@ -47,36 +37,17 @@ defineProps({
     required: false,
     default: false,
   },
-  modelValue: {
-    type: [String, Number],
-    default: '',
-  },
 });
-
-const emit = defineEmits(['update:modelValue']);
-
-const updateInput = (event) => {
-  const { value } = event.target;
-
-  emit('update:modelValue', value);
-};
 </script>
 
-<style lang="postcss" scoped>
-.input {
-  margin-bottom: 20px;
-}
-
-.input__label {
+<style>
+.select {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
   margin-bottom: 10px;
-  font-size: 16px;
 }
 
-.input__field {
+.select__field {
   padding: 0 10px;
   width: 100%;
   height: 40px;
@@ -87,16 +58,16 @@ const updateInput = (event) => {
   transition: border-color .3s ease-in-out;
 }
 
-.input__field:hover,
-.input__field:focus {
+.select__field:hover,
+.select__field:focus {
   border: 1px solid var(--color-gray-dark);
 }
 
-.input__field:valid {
+.select__field:valid {
   border: 1px solid var(--color-green);
 }
 
-.input__field:focus:invalid {
+.select__field:focus:invalid {
   border: 1px solid var(--color-red);
 }
 </style>

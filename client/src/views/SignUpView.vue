@@ -9,6 +9,7 @@
           id="email"
           type="email"
           label="Email"
+          name="email"
           required
         />
       </fieldset>
@@ -17,6 +18,7 @@
           id="password"
           type="password"
           label="Password"
+          name="password"
           required
         />
       </fieldset>

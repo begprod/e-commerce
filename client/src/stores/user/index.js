@@ -4,7 +4,7 @@ const useuUserStore = defineStore('user', {
   state: () => ({
     user: {
       email: 'test@test.test',
-      role: 'USER',
+      role: 'ADMIN',
     },
     authenticated: true,
   }),

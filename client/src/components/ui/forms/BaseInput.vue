@@ -13,6 +13,7 @@
     <input
       :id="id"
       :type="type"
+      :name="name"
       :value="modelValue"
       :required="required"
       @input="updateInput"
@@ -32,6 +33,10 @@ defineProps({
     type: String,
     required: false,
     default: 'text',
+  },
+  name: {
+    type: String,
+    required: false,
   },
   label: {
     type: String,

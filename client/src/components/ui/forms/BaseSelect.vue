@@ -44,6 +44,10 @@ defineProps({
 .select {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.select__label {
   margin-bottom: 10px;
 }
 

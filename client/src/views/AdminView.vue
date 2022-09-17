@@ -108,7 +108,6 @@
           </BaseSelect>
         </fieldset>
         <fieldset>
-<!--    TODO: добавить стили для type="file"      -->
           <BaseInput
             id="img"
             type="file"
@@ -121,7 +120,7 @@
       <template v-slot:controls>
         <BaseButton
           type="submit"
-          text="Add brand"
+          text="Add device"
         />
       </template>
     </BaseFormWrapper>

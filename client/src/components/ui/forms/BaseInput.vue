@@ -6,10 +6,9 @@
     :for="id"
     class="input__label"
   >
-    <span>
       {{ label }}
       {{ required ? '– required' : '' }}
-    </span>
+  </label>
     <input
       :id="id"
       :type="type"
@@ -19,7 +18,6 @@
       @input="updateInput"
       class="input__field"
     />
-  </label>
 </div>
 </template>
 
@@ -85,6 +83,11 @@ const updateInput = (event) => {
   border-radius: 4px;
   outline: none;
   transition: border-color .3s ease-in-out;
+}
+
+.input__field[type="file"] {
+  padding: 0;
+  border: none !important;
 }
 
 .input__field:hover,

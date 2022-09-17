@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <h1>This is Cart page view</h1>
-  </div>
+  <h1>Cart</h1>
+  <BaseCartList />
 </template>
 
 <script setup>
 import { useMeta } from 'vue-meta';
+import BaseCartList from '@/components/ui/BaseCartList.vue';
 
 useMeta({
   title: 'Cart',

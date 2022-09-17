@@ -6,7 +6,7 @@ const useuUserStore = defineStore('user', {
       email: 'test@test.test',
       role: 'USER',
     },
-    authenticated: false,
+    authenticated: true,
   }),
 
   actions: {},

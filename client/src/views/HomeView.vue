@@ -48,7 +48,7 @@
 import { useMeta } from 'vue-meta';
 import useProductStore from '@/stores/products';
 import BaseBar from '@/components/ui/BaseBar.vue';
-import BaseRadioButton from '@/components/ui/BaseRadioButton.vue';
+import BaseRadioButton from '@/components/ui/forms/BaseRadioButton.vue';
 import BaseCardGrid from '@/components/ui/BaseCardGrid.vue';
 import BaseCard from '@/components/ui/BaseCard.vue';
 

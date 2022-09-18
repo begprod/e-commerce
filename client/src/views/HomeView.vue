@@ -52,6 +52,8 @@ import BaseRadioButton from '@/components/ui/forms/BaseRadioButton.vue';
 import BaseCardGrid from '@/components/ui/BaseCardGrid.vue';
 import BaseCard from '@/components/ui/BaseCard.vue';
 
+import apiClient from '@/api/api';
+
 useMeta({
   title: 'HomePage',
 });
@@ -62,4 +64,9 @@ const brands = useProductStore().getBrands;
 
 const { setCurrentType } = useProductStore();
 const { setCurrentBrand } = useProductStore();
+
+apiClient.get('/api/user/auth')
+  .then((response) => {
+    console.log(response);
+  });
 </script>

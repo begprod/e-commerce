@@ -5,13 +5,22 @@ const apiClient = axios.create({
   baseURL: process.env.VUE_APP_API_URL,
 });
 
+const authInterceptor = (config) => {
+  // eslint-disable-next-line no-param-reassign
+  config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+
+  return config;
+};
+
+apiClient.interceptors.request.use(authInterceptor);
+
 apiClient.interceptors.response.use(
   (response) => {
     useCommonStore().setIsLoading(false);
     useCommonStore().setIsError(false);
     useCommonStore().setErrorMessages([]);
 
-    console.log('response', response);
+    console.log('apiClient response', response);
     return response;
   },
   (error) => {
@@ -19,6 +28,7 @@ apiClient.interceptors.response.use(
     useCommonStore().setIsError(true);
     useCommonStore().setErrorMessages(error.response.data.message);
 
+    console.log('apiClient error', error);
     return Promise.reject(error);
   },
 );

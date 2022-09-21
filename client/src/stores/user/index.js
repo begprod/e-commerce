@@ -1,15 +1,44 @@
 import { defineStore } from 'pinia';
+import jwtDecode from 'jwt-decode';
+import UserServices from '@/services/UserService';
 
-const useuUserStore = defineStore('user', {
+const useUserStore = defineStore('user', {
   state: () => ({
     user: {
-      email: 'test@test.test',
-      role: 'ADMIN',
+      email: null,
+      role: null,
     },
-    authenticated: true,
+    authenticated: false,
   }),
 
-  actions: {},
+  actions: {
+    signUp(payload) {
+      return UserServices.signUp(payload);
+    },
+
+    signIn(payload) {
+      return UserServices.signIn(payload);
+    },
+
+    async check() {
+      await UserServices.checkAuth()
+        .then((response) => {
+          const { token } = response.data;
+          const decodedToken = jwtDecode(token);
+
+          this.setCurrentUser(decodedToken);
+          this.setAuthenticated(true);
+        });
+    },
+
+    setCurrentUser(user) {
+      this.user = user;
+    },
+
+    setAuthenticated(authenticated) {
+      this.authenticated = authenticated;
+    },
+  },
 
   getters: {
     currentUser: (state) => state.user,
@@ -18,4 +47,4 @@ const useuUserStore = defineStore('user', {
   },
 });
 
-export default useuUserStore;
+export default useUserStore;

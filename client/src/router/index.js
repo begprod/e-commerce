@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import useUserStore from '@/stores/user';
+import useCommonStore from '@/stores/common';
+
 import middlewarePipeline from '@/router/middlewarePipeline';
 
 import guest from '@/router/middleware/guest';
@@ -72,11 +74,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const { middleware } = to.meta;
-
-  if (middleware === undefined) {
-    next();
-  }
-
   const context = {
     to,
     from,
@@ -84,10 +81,25 @@ router.beforeEach((to, from, next) => {
     useUserStore,
   };
 
-  return middleware[0]({
-    ...context,
-    next: middlewarePipeline(context, middleware, 1),
-  });
+  useUserStore().check()
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      if (middleware) {
+        return middleware[0]({
+          ...context,
+          next: middlewarePipeline(context, middleware, 1),
+        });
+      }
+
+      return next();
+    });
+});
+
+router.afterEach(() => {
+  useCommonStore().setIsError(false);
+  useCommonStore().setErrorMessages([]);
 });
 
 export default router;

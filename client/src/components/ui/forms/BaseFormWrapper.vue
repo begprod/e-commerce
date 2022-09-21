@@ -1,5 +1,8 @@
 <template>
-  <form class="form">
+  <form
+    class="form"
+    @submit.prevent="onSubmit"
+  >
     <div class="form__title">
       <slot name="title"/>
     </div>
@@ -9,8 +12,19 @@
     <div class="form__controls">
       <slot name="controls"/>
     </div>
+    <div class="form__message">
+      <slot name="message"></slot>
+    </div>
   </form>
 </template>
+
+<script setup>
+const emit = defineEmits(['submit']);
+
+const onSubmit = (event) => {
+  emit('submit', event);
+};
+</script>
 
 <style lang="postcss" scoped>
 .form {
@@ -33,6 +47,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.form__message {
+  margin-top: 30px;
+  text-align: center;
 }
 
 :deep(h2) {

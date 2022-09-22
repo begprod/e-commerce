@@ -13,6 +13,7 @@
       v-if="isAuthenticated"
       class="header__item"
     >
+      <div>Hello,{{ currentUser.email }}</div>
       <router-link
         to="/cart/1">
         Cart
@@ -36,6 +37,7 @@ import BaseNavigation from '@/components/partials/BaseNavigation.vue';
 
 const router = useRouter();
 
+const currentUser = computed(() => useUserStore().currentUser);
 const isAuthenticated = computed(() => useUserStore().isAuthenticated);
 
 const logout = () => {
@@ -62,6 +64,14 @@ const logout = () => {
 .header__item {
   display: flex;
   align-items: center;
+}
+
+.header__item > * {
+  margin-right: 20px;
+}
+
+.header__item > *:last-child {
+  margin-right: 0;
 }
 
 .header__logo {

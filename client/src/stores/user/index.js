@@ -1,13 +1,10 @@
-import { defineStore } from 'pinia';
 import jwtDecode from 'jwt-decode';
+import { defineStore } from 'pinia';
 import UserServices from '@/services/UserService';
 
 const useUserStore = defineStore('user', {
   state: () => ({
-    user: {
-      email: null,
-      role: null,
-    },
+    user: {},
     authenticated: false,
   }),
 

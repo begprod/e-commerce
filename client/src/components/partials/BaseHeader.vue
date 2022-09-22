@@ -9,20 +9,44 @@
 
     <BaseNavigation/>
 
-    <router-link
+    <div
       v-if="isAuthenticated"
-      to="/cart/1">
-      Cart
-    </router-link>
+      class="header__item"
+    >
+      <router-link
+        to="/cart/1">
+        Cart
+      </router-link>
+      <BaseButton
+        text="Logout"
+        type="button"
+        class="header__logout"
+        @click="logout"
+      />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 import useUserStore from '@/stores/user';
+import BaseButton from '@/components/ui/forms/BaseButton.vue';
 import BaseNavigation from '@/components/partials/BaseNavigation.vue';
 
+const router = useRouter();
+
 const isAuthenticated = computed(() => useUserStore().isAuthenticated);
+
+const logout = () => {
+  router.push({ name: 'home' })
+    .then(() => {
+      useUserStore().setCurrentUser({});
+      useUserStore().setAuthenticated(false);
+
+      localStorage.removeItem('token');
+    });
+};
 </script>
 
 <style lang="postcss" scoped>
@@ -35,7 +59,16 @@ const isAuthenticated = computed(() => useUserStore().isAuthenticated);
   border-bottom: 1px solid #cccccc;
 }
 
+.header__item {
+  display: flex;
+  align-items: center;
+}
+
 .header__logo {
   max-width: 50px;
+}
+
+.header__logout {
+  margin-left: 15px;
 }
 </style>

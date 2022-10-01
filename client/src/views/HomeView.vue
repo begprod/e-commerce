@@ -1,37 +1,40 @@
 <template>
-  <h1>Devices</h1>
-  <BaseBar
-    title="Type"
+  <div
+    v-if="!isLoading"
   >
-    <BaseRadioButton
-      v-for="(type) in types"
-      :key="type.name"
-      :id="type.name"
-      :value="type.name"
-      :label="type.name"
-      @click="setCurrentType(type)"
-      name="type"
-    />
-  </BaseBar>
-  <BaseBar
-    title="Brand"
-  >
-    <BaseRadioButton
-      v-for="(brand) in brands"
-      :key="brand.name"
-      :id="brand.name"
-      :value="brand.name"
-      :label="brand.name"
-      @click="setCurrentBrand(brand)"
-      name="brand"
-    />
-  </BaseBar>
-  <BaseCardGrid>
+    <h1>Devices</h1>
+    <BaseBar
+      title="Type"
+    >
+      <BaseRadioButton
+        v-for="(type) in types"
+        :key="type.name"
+        :id="type.name"
+        :value="type.name"
+        :label="type.name"
+        @click="setCurrentType(type)"
+        name="type"
+      />
+    </BaseBar>
+    <BaseBar
+      title="Brand"
+    >
+      <BaseRadioButton
+        v-for="(brand) in brands"
+        :key="brand.name"
+        :id="brand.name"
+        :value="brand.name"
+        :label="brand.name"
+        @click="setCurrentBrand(brand)"
+        name="brand"
+      />
+    </BaseBar>
+    <BaseCardGrid>
       <BaseCard
         v-for="(product) in products"
         :name="product.name"
         :price="product.price"
-        :img="product.img"
+        :img="`http://localhost:8080/${product.img}`"
         :key="product.id"
         :to="{
           name: 'device-detail',
@@ -41,12 +44,15 @@
         }"
         tag="router-link"
       />
-  </BaseCardGrid>
+    </BaseCardGrid>
+  </div>
 </template>
 
 <script setup>
+import { onBeforeMount, computed } from 'vue';
 import { useMeta } from 'vue-meta';
-import useProductStore from '@/stores/products';
+import useCommonStore from '@/stores/common';
+import useProductsStore from '@/stores/products';
 import BaseBar from '@/components/ui/BaseBar.vue';
 import BaseRadioButton from '@/components/ui/forms/BaseRadioButton.vue';
 import BaseCardGrid from '@/components/ui/BaseCardGrid.vue';
@@ -56,10 +62,22 @@ useMeta({
   title: 'HomePage',
 });
 
-const products = useProductStore().getProducts;
-const types = useProductStore().getTypes;
-const brands = useProductStore().getBrands;
+const isLoading = computed(() => useCommonStore().isLoading);
 
-const { setCurrentType } = useProductStore();
-const { setCurrentBrand } = useProductStore();
+const products = computed(() => useProductsStore().products);
+const types = computed(() => useProductsStore().types);
+const brands = computed(() => useProductsStore().brands);
+
+const { setCurrentType } = useProductsStore();
+const { setCurrentBrand } = useProductsStore();
+
+onBeforeMount(async () => {
+  useCommonStore().setIsLoading(true);
+
+  await useProductsStore().setProducts();
+  await useProductsStore().setTypes();
+  await useProductsStore().setBrands();
+
+  useCommonStore().setIsLoading(false);
+});
 </script>

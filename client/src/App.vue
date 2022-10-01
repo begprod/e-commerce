@@ -8,13 +8,7 @@
       <router-view/>
     </div>
   </main>
-  <BaseToast
-    :isVisible="isError"
-  >
-    <template v-slot:content>
-      {{ errorMessage }}
-    </template>
-  </BaseToast>
+  <BaseToast/>
   <BaseFooter/>
 </template>
 

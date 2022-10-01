@@ -1,74 +1,37 @@
 import { defineStore } from 'pinia';
+import ProductsServices from '@/services/ProductsService';
 
 const useProductsStore = defineStore('products', {
   state: () => ({
-    products: [
-      {
-        id: 1,
-        name: 'Iphone 13 pro max',
-        img: 'https://pngimg.com/uploads/iphone_13/iphone_13_PNG2.png',
-        price: 100000,
-      },
-      {
-        id: 2,
-        name: 'Iphone 12 pro max',
-        img: 'https://pngimg.com/uploads/iphone_13/iphone_13_PNG2.png',
-        price: 200000,
-      },
-      {
-        id: 3,
-        name: 'Iphone 11 pro',
-        img: 'https://pngimg.com/uploads/iphone_13/iphone_13_PNG2.png',
-        price: 300000,
-      },
-      {
-        id: 4,
-        name: 'Iphone XR',
-        img: 'https://pngimg.com/uploads/iphone_13/iphone_13_PNG2.png',
-        price: 400000,
-      },
-    ],
-    types: [
-      {
-        id: 1,
-        name: 'Холодильники',
-      },
-      {
-        id: 2,
-        name: 'Смартфоны',
-      },
-      {
-        id: 3,
-        name: 'Часы',
-      },
-      {
-        id: 4,
-        name: 'Пылесосы',
-      },
-    ],
-    brands: [
-      {
-        id: 1,
-        name: 'Samsung',
-      },
-      {
-        id: 2,
-        name: 'Apple',
-      },
-      {
-        id: 3,
-        name: 'Xiaomi',
-      },
-      {
-        id: 4,
-        name: 'Huawei',
-      },
-    ],
+    products: null,
+    types: null,
+    brands: null,
     currentBrand: null,
     currentType: null,
   }),
 
   actions: {
+    setProducts() {
+      ProductsServices.getAllProducts()
+        .then((response) => {
+          this.products = response.data.rows;
+        });
+    },
+
+    setTypes() {
+      ProductsServices.getAllTypes()
+        .then((response) => {
+          this.types = response.data;
+        });
+    },
+
+    setBrands() {
+      ProductsServices.getAllBrands()
+        .then((response) => {
+          this.brands = response.data;
+        });
+    },
+
     setCurrentBrand(brand) {
       this.currentBrand = brand;
     },

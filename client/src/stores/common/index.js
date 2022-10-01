@@ -4,6 +4,7 @@ const useCommonStore = defineStore('common', {
   state: () => ({
     isLoading: false,
     isError: false,
+    isToastVisible: false,
     errorMessages: [],
   }),
   actions: {
@@ -13,6 +14,9 @@ const useCommonStore = defineStore('common', {
     setIsError(isError) {
       this.isError = isError;
     },
+    setToastMessageIsVisible(isToastVisible) {
+      this.isToastVisible = isToastVisible;
+    },
     setErrorMessages(errorMessages) {
       this.errorMessages = errorMessages;
     },
@@ -20,6 +24,7 @@ const useCommonStore = defineStore('common', {
   getters: {
     getIsLoading: (state) => state.isLoading,
     getIsError: (state) => state.isError,
+    getToastMessageIsVisible: (state) => state.isToastVisible,
     getErrorMessages: (state) => state.errorMessages,
   },
 });

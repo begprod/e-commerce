@@ -19,6 +19,7 @@ apiClient.interceptors.response.use(
     useCommonStore().setIsLoading(false);
     useCommonStore().setIsError(false);
     useCommonStore().setErrorMessages([]);
+    useCommonStore().setToastMessageIsVisible(false);
 
     console.log('apiClient response', response);
     return response;
@@ -27,6 +28,10 @@ apiClient.interceptors.response.use(
     useCommonStore().setIsLoading(false);
     useCommonStore().setIsError(true);
     useCommonStore().setErrorMessages(error.response.data.message);
+
+    if (error.response.status !== 401) {
+      useCommonStore().setToastMessageIsVisible(true);
+    }
 
     console.log('apiClient error', error);
     return Promise.reject(error);

@@ -8,6 +8,13 @@
       <router-view/>
     </div>
   </main>
+  <BaseToast
+    :isVisible="isError"
+  >
+    <template v-slot:content>
+      {{ errorMessage }}
+    </template>
+  </BaseToast>
   <BaseFooter/>
 </template>
 
@@ -15,6 +22,7 @@
 import { useMeta } from 'vue-meta';
 import BaseHeader from '@/components/partials/BaseHeader.vue';
 import BaseFooter from '@/components/partials/BaseFooter.vue';
+import BaseToast from '@/components/ui/BaseToast.vue';
 
 useMeta({
   title: 'Hello',

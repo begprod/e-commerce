@@ -1,6 +1,8 @@
 <template>
   <div class="panel">
-    <BaseFormWrapper>
+    <BaseFormWrapper
+      @submit="submitType"
+    >
       <template v-slot:title>
         <h2>Add type</h2>
       </template>
@@ -11,6 +13,7 @@
             type="text"
             label="Type"
             name="name"
+            v-model="formDataType.name"
             required
           />
         </fieldset>
@@ -79,6 +82,7 @@
             name="typeId"
             label="Type"
             required
+            @click="useProductStore().setTypes()"
           >
             <option value="">Select type</option>
             <option
@@ -96,6 +100,7 @@
             name="brandId"
             label="Brand"
             required
+            @click="useProductStore().setBrands()"
           >
             <option value="">Select brand</option>
             <option
@@ -128,8 +133,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, reactive, onBeforeMount } from 'vue';
 import { useMeta } from 'vue-meta';
+import useCommonStore from '@/stores/common';
 import useProductStore from '@/stores/products';
 import BaseFormWrapper from '@/components/ui/forms/BaseFormWrapper.vue';
 import BaseInput from '@/components/ui/forms/BaseInput.vue';
@@ -140,8 +146,32 @@ useMeta({
   title: 'Admin panel',
 });
 
+onBeforeMount(() => {
+  useProductStore().setTypes();
+  useProductStore().setBrands();
+});
+
 const types = computed(() => useProductStore().getTypes);
 const brands = computed(() => useProductStore().getBrands);
+
+console.log(types);
+console.log(brands);
+
+const formDataType = reactive({
+  name: '',
+});
+
+const submitType = () => {
+  useProductStore().addType(formDataType)
+    .then(() => {
+      formDataType.name = '';
+      useCommonStore().setToastMessage('Type added');
+      useCommonStore().setToastMessageIsVisible(true);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 </script>
 
 <style lang="postcss" scoped>

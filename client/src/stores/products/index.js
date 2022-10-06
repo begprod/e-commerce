@@ -11,6 +11,10 @@ const useProductsStore = defineStore('products', {
   }),
 
   actions: {
+    addType(payload) {
+      return ProductsServices.addType(payload);
+    },
+
     setProducts() {
       ProductsServices.getAllProducts()
         .then((response) => {
@@ -35,6 +39,7 @@ const useProductsStore = defineStore('products', {
     setCurrentBrand(brand) {
       this.currentBrand = brand;
     },
+
     setCurrentType(type) {
       this.currentType = type;
     },

@@ -27,7 +27,7 @@ apiClient.interceptors.response.use(
   (error) => {
     useCommonStore().setIsLoading(false);
     useCommonStore().setIsError(true);
-    useCommonStore().setErrorMessages(error.response.data.message);
+    useCommonStore().setErrorMessages(error.response.data.message || error.response.status);
 
     if (error.response.status !== 401) {
       useCommonStore().setToastMessageIsVisible(true);

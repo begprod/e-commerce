@@ -1,11 +1,11 @@
 <template>
   <div
     v-if="isVisible"
-    class="tooltip"
+    class="toast"
   >
-    <div class="tooltip__inner">
-      <div class="tooltip__content">
-        {{ errorMessage }}
+    <div class="toast__inner">
+      <div class="toast__content">
+        {{ message || errorMessage }}
       </div>
       <BaseButton
         text="Close"
@@ -22,11 +22,12 @@ import useCommonStore from '@/stores/common';
 import BaseButton from '@/components/ui/forms/BaseButton.vue';
 
 const isVisible = computed(() => useCommonStore().getToastMessageIsVisible);
+const message = computed(() => useCommonStore().getToastMessage);
 const errorMessage = computed(() => useCommonStore().getErrorMessages);
 </script>
 
 <style lang="postcss" scoped>
-.tooltip {
+.toast {
   position: fixed;
   z-index: 100;
   bottom: 30px;
@@ -40,7 +41,7 @@ const errorMessage = computed(() => useCommonStore().getErrorMessages);
   transform: translateX(-50%);
 }
 
-.tooltip__inner {
+.toast__inner {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -48,7 +49,7 @@ const errorMessage = computed(() => useCommonStore().getErrorMessages);
   height: 100%;
 }
 
-.tooltip__content {
+.toast__content {
   text-align: center;
 }
 </style>

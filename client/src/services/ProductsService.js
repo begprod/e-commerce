@@ -5,6 +5,10 @@ export default {
     return apiClient.get('/api/device');
   },
 
+  addType(type) {
+    return apiClient.post('/api/type', type);
+  },
+
   getAllTypes() {
     return apiClient.get('/api/type');
   },

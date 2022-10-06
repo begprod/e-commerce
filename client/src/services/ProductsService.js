@@ -13,6 +13,10 @@ export default {
     return apiClient.get('/api/type');
   },
 
+  addBrand(brand) {
+    return apiClient.post('/api/brand', brand);
+  },
+
   getAllBrands() {
     return apiClient.get('/api/brand');
   },

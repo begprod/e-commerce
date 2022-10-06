@@ -28,7 +28,9 @@
   </div>
 
   <div class="panel">
-    <BaseFormWrapper>
+    <BaseFormWrapper
+      @submit="submitBrand"
+    >
       <template v-slot:title>
         <h2>Add brand</h2>
       </template>
@@ -39,6 +41,7 @@
             type="text"
             label="Brand"
             name="name"
+            v-model="formDataBrand.name"
             required
           />
         </fieldset>
@@ -154,10 +157,11 @@ onBeforeMount(() => {
 const types = computed(() => useProductStore().getTypes);
 const brands = computed(() => useProductStore().getBrands);
 
-console.log(types);
-console.log(brands);
-
 const formDataType = reactive({
+  name: '',
+});
+
+const formDataBrand = reactive({
   name: '',
 });
 
@@ -166,6 +170,18 @@ const submitType = () => {
     .then(() => {
       formDataType.name = '';
       useCommonStore().setToastMessage('Type added');
+      useCommonStore().setToastMessageIsVisible(true);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const submitBrand = () => {
+  useProductStore().addBrand(formDataBrand)
+    .then(() => {
+      formDataBrand.name = '';
+      useCommonStore().setToastMessage('Brand added');
       useCommonStore().setToastMessageIsVisible(true);
     })
     .catch((err) => {

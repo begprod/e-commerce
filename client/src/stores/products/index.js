@@ -11,10 +11,6 @@ const useProductsStore = defineStore('products', {
   }),
 
   actions: {
-    addType(payload) {
-      return ProductsServices.addType(payload);
-    },
-
     setProducts() {
       ProductsServices.getAllProducts()
         .then((response) => {
@@ -22,11 +18,19 @@ const useProductsStore = defineStore('products', {
         });
     },
 
+    addType(payload) {
+      return ProductsServices.addType(payload);
+    },
+
     setTypes() {
       ProductsServices.getAllTypes()
         .then((response) => {
           this.types = response.data;
         });
+    },
+
+    addBrand(payload) {
+      return ProductsServices.addBrand(payload);
     },
 
     setBrands() {

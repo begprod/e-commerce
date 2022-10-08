@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid"
+    class="grid column-gap-60 row-gap-40"
     :class="classObject"
   >
     <slot/>
@@ -22,18 +22,3 @@ const classObject = computed(() => ({
   'grid-columns-3': props.columns === 3,
 }));
 </script>
-
-<style lang="postcss" scoped>
-.grid {
-  display: grid;
-  grid-gap: 60px 40px;
-}
-
-.grid-columns-1 {
-  grid-template-columns: 1fr;
-}
-
-.grid-columns-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-</style>

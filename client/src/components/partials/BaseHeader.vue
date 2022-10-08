@@ -1,29 +1,31 @@
 <template>
   <div class="header">
-    <router-link
-      to="/"
-      class="header__logo"
-    >
-      <img src="@/assets/logo.png" alt="logo">
-    </router-link>
-
-    <BaseNavigation/>
-
-    <div
-      v-if="isAuthenticated"
-      class="header__item"
-    >
-      <div>Hello,{{ currentUser.email }}</div>
+    <div class="container header__inner">
       <router-link
-        to="/cart/1">
-        Cart
+        to="/"
+        class="header__logo"
+      >
+        <img src="@/assets/logo.png" alt="logo">
       </router-link>
-      <BaseButton
-        text="Logout"
-        type="button"
-        class="header__logout"
-        @click="logout"
-      />
+
+      <BaseNavigation/>
+
+      <div
+        v-if="isAuthenticated"
+        class="header__item"
+      >
+        <div>Hello,{{ currentUser.email }}</div>
+        <router-link
+          to="/cart/1">
+          Cart
+        </router-link>
+        <BaseButton
+          text="Logout"
+          type="button"
+          class="header__logout"
+          @click="logout"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -53,12 +55,16 @@ const logout = () => {
 
 <style lang="postcss" scoped>
 .header {
+  padding: 0 40px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.header__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px;
+  padding: 0;
   min-height: 80px;
-  border-bottom: 1px solid #cccccc;
 }
 
 .header__item {

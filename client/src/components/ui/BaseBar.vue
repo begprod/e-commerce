@@ -22,7 +22,6 @@ defineProps({
 <style lang="postcss" scoped>
 .bar {
   display: flex;
-  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -38,6 +37,7 @@ defineProps({
 }
 
 :deep(.radio) {
-  margin-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 </style>

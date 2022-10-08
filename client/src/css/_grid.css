@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+}
+
+.grid-columns-1 {
+  grid-template-columns: 1fr;
+}
+
+.grid-columns-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gap-5 {
+  grid-gap: 5px;
+}
+
+.column-gap-60 {
+  column-gap: 60px;
+}
+
+.row-gap-40 {
+  row-gap: 40px;
+}

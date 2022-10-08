@@ -61,7 +61,7 @@ defineProps({
   margin-bottom: 10px;
   padding: 20px;
   width: 100%;
-  max-height: 300px;
+  height: 200px;
   text-align: center;
   background-color: var(--color-gray-light);
 }

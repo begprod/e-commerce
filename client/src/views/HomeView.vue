@@ -4,19 +4,6 @@
   >
     <h1>Devices</h1>
     <BaseBar
-      title="Type"
-    >
-      <BaseRadioButton
-        v-for="(type) in types"
-        :key="type.name"
-        :id="type.name"
-        :value="type.name"
-        :label="type.name"
-        @click="setCurrentType(type)"
-        name="type"
-      />
-    </BaseBar>
-    <BaseBar
       title="Brand"
     >
       <BaseRadioButton
@@ -27,6 +14,19 @@
         :label="brand.name"
         @click="setCurrentBrand(brand)"
         name="brand"
+      />
+    </BaseBar>
+    <BaseBar
+      title="Type"
+    >
+      <BaseRadioButton
+        v-for="(type) in types"
+        :key="type.name"
+        :id="type.name"
+        :value="type.name"
+        :label="type.name"
+        @click="setCurrentType(type)"
+        name="type"
       />
     </BaseBar>
     <BaseCardGrid>

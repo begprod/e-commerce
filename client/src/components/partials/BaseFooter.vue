@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <div class="footer__inner">
+    <div class="container footer__inner">
       2022 - {{ year }}
     </div>
   </div>

@@ -1,0 +1,22 @@
+{
+  "form_settings": {
+    "title": "Add type"
+  },
+  "fields": [
+    {
+      "component": "BaseInput",
+      "id": "type",
+      "type": "text",
+      "label": "Type",
+      "name": "type",
+      "required": true
+    }
+  ],
+  "buttons": [
+    {
+      "component": "BaseButton",
+      "type": "submit",
+      "text": "Add type"
+    }
+  ]
+}

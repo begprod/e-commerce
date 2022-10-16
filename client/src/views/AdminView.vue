@@ -4,25 +4,31 @@
       @submit="submitType"
     >
       <template v-slot:title>
-        <h2>Add type</h2>
+        <h2>{{ typeFormData.form_settings.title }}</h2>
       </template>
       <template v-slot:fields>
-        <fieldset>
-          <BaseInput
-            id="type"
-            type="text"
-            label="Type"
-            name="name"
-            v-model="formDataType.name"
-            required
-          />
+        <fieldset
+          v-for="field in typeFormData.fields"
+          :key="field.name"
+        >
+          <component
+            :is="field.component"
+            :id="field.id"
+            :type="field.type"
+            :label="field.label"
+            :name="field.name"
+            :required="field.required"
+          ></component>
         </fieldset>
       </template>
       <template v-slot:controls>
-        <BaseButton
-          type="submit"
-          text="Add type"
-        />
+        <component
+          v-for="button in typeFormData.buttons"
+          :key="button.name"
+          :is="button.component"
+          :type="button.type"
+          :text="button.text"
+        ></component>
       </template>
     </BaseFormWrapper>
   </div>
@@ -32,25 +38,31 @@
       @submit="submitBrand"
     >
       <template v-slot:title>
-        <h2>Add brand</h2>
+        <h2>{{ brandFormData.form_settings.title }}</h2>
       </template>
       <template v-slot:fields>
-        <fieldset>
-          <BaseInput
-            id="brand"
-            type="text"
-            label="Brand"
-            name="name"
-            v-model="formDataBrand.name"
-            required
-          />
+        <fieldset
+          v-for="field in brandFormData.fields"
+          :key="field.name"
+        >
+          <component
+            :is="field.component"
+            :id="field.id"
+            :type="field.type"
+            :label="field.label"
+            :name="field.name"
+            :required="field.required"
+          ></component>
         </fieldset>
       </template>
       <template v-slot:controls>
-        <BaseButton
-          type="submit"
-          text="Add brand"
-        />
+        <component
+          v-for="button in brandFormData.buttons"
+          :key="button.name"
+          :is="button.component"
+          :type="button.type"
+          :text="button.text"
+        ></component>
       </template>
     </BaseFormWrapper>
   </div>
@@ -58,92 +70,46 @@
   <div class="panel">
     <BaseFormWrapper>
       <template v-slot:title>
-        <h2>Add device</h2>
+        <h2>{{ deviceFormData.form_settings.title }}</h2>
       </template>
       <template v-slot:fields>
-        <fieldset>
-          <BaseInput
-            id="name"
-            type="text"
-            label="Name"
-            name="name"
-            required
-          />
-        </fieldset>
-        <fieldset>
-          <BaseInput
-            id="price"
-            type="number"
-            label="Price"
-            name="price"
-            required
-          />
-        </fieldset>
-        <fieldset>
-          <BaseSelect
-            id="typeId"
-            name="typeId"
-            label="Type"
-            required
-            @click="useProductStore().setTypes()"
-          >
-            <option value="">Select type</option>
-            <option
-              v-for="type in types"
-              :key="type.id"
-              :value="type.id"
-            >
-              {{ type.name }}
-            </option>
-          </BaseSelect>
-        </fieldset>
-        <fieldset>
-          <BaseSelect
-            id="brandId"
-            name="brandId"
-            label="Brand"
-            required
-            @click="useProductStore().setBrands()"
-          >
-            <option value="">Select brand</option>
-            <option
-              v-for="brand in brands"
-              :key="brand.id"
-              :value="brand.id"
-            >
-              {{ brand.name }}
-            </option>
-          </BaseSelect>
-        </fieldset>
-        <fieldset>
-          <BaseInput
-            id="img"
-            type="file"
-            label="image"
-            name="img"
-            required
-          />
+        <fieldset
+          v-for="field in deviceFormData.fields"
+          :key="field.name"
+        >
+          <component
+            :is="field.component"
+            :id="field.id"
+            :type="field.type"
+            :label="field.label"
+            :name="field.name"
+            :required="field.required"
+          ></component>
         </fieldset>
       </template>
       <template v-slot:controls>
-        <BaseButton
-          type="submit"
-          text="Add device"
-        />
+        <component
+          v-for="button in deviceFormData.buttons"
+          :key="button.name"
+          :is="button.component"
+          :type="button.type"
+          :text="button.text"
+        ></component>
+
       </template>
     </BaseFormWrapper>
   </div>
 </template>
 
 <script setup>
-import { computed, reactive, onBeforeMount } from 'vue';
+import { reactive, onBeforeMount } from 'vue';
 import { useMeta } from 'vue-meta';
 import useCommonStore from '@/stores/common';
 import useProductStore from '@/stores/products';
 import BaseFormWrapper from '@/components/ui/forms/BaseFormWrapper.vue';
-import BaseInput from '@/components/ui/forms/BaseInput.vue';
-import BaseSelect from '@/components/ui/forms/BaseSelect.vue';
-import BaseButton from '@/components/ui/forms/BaseButton.vue';
+import typeFormData from '@/components/forms/type.json';
+import brandFormData from '@/components/forms/brand.json';
+import deviceFormData from '@/components/forms/device.json';
 
 useMeta({
   title: 'Admin panel',
@@ -154,8 +120,8 @@ onBeforeMount(() => {
   useProductStore().setBrands();
 });
 
-const types = computed(() => useProductStore().getTypes);
-const brands = computed(() => useProductStore().getBrands);
+// const types = computed(() => useProductStore().getTypes);
+// const brands = computed(() => useProductStore().getBrands);
 
 const formDataType = reactive({
   name: '',
@@ -173,6 +139,7 @@ const submitType = () => {
       useCommonStore().setToastMessageIsVisible(true);
     })
     .catch((err) => {
+      // eslint-disable-next-line no-console
       console.log(err);
     });
 };
@@ -185,6 +152,7 @@ const submitBrand = () => {
       useCommonStore().setToastMessageIsVisible(true);
     })
     .catch((err) => {
+      // eslint-disable-next-line no-console
       console.log(err);
     });
 };

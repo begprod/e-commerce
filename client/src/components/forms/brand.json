@@ -1,0 +1,22 @@
+{
+  "form_settings": {
+    "title": "Add brand"
+  },
+  "fields": [
+    {
+      "component": "BaseInput",
+      "id": "brand",
+      "type": "text",
+      "label": "Brand",
+      "name": "brand",
+      "required": true
+    }
+  ],
+  "buttons": [
+    {
+      "component": "BaseButton",
+      "type": "submit",
+      "text": "Add brand"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "form_settings": {
+    "title": "Add device"
+  },
+  "fields": [
+    {
+      "component": "BaseInput",
+      "id": "name",
+      "type": "text",
+      "label": "Name",
+      "name": "name",
+      "required": true
+    },
+    {
+      "component": "BaseInput",
+      "id": "price",
+      "type": "text",
+      "label": "Price",
+      "name": "price",
+      "required": true
+    },
+    {
+      "component": "BaseSelect",
+      "id": "typeId",
+      "label": "Type",
+      "name": "typeId",
+      "required": true
+    },
+    {
+      "component": "BaseSelect",
+      "id": "brandId",
+      "label": "Brand",
+      "name": "brandId",
+      "required": true
+    },
+    {
+      "component": "BaseInput",
+      "id": "img",
+      "type": "file",
+      "label": "Image",
+      "name": "img",
+      "required": true
+    }
+  ],
+  "buttons": [
+    {
+      "component": "BaseButton",
+      "type": "submit",
+      "text": "Add device"
+    }
+  ]
+}

@@ -12,14 +12,24 @@
       :id="id"
       :name="name"
       :required="required"
+      @change="updateSelect"
     >
-      <slot />
+      <option disabled selected value> -- select an option -- </option>
+      <option
+        v-for="option in optionsList"
+        :key="option.name"
+        :value="option.id"
+      >
+        {{ option.name }}
+      </option>
     </select>
   </div>
 </template>
 
 <script setup>
-defineProps({
+import { ref } from 'vue';
+
+const props = defineProps({
   id: {
     type: String,
     required: true,
@@ -32,12 +42,26 @@ defineProps({
     type: String,
     required: true,
   },
+  options: {
+    type: [Array, Object],
+    required: true,
+  },
   required: {
     type: Boolean,
     required: false,
     default: false,
   },
 });
+
+const optionsList = ref(props.options);
+
+const emit = defineEmits(['update:modelValue']);
+
+const updateSelect = (event) => {
+  const { value } = event.target;
+
+  emit('update:modelValue', value);
+};
 </script>
 
 <style>

@@ -1,6 +1,10 @@
 import apiClient from '@/api/api';
 
 export default {
+  addProduct(product) {
+    return apiClient.post('/api/device', product);
+  },
+
   getAllProducts() {
     return apiClient.get('/api/device');
   },

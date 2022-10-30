@@ -8,7 +8,7 @@
       "id": "brand",
       "type": "text",
       "label": "Brand",
-      "name": "brand",
+      "name": "name",
       "required": true
     }
   ],

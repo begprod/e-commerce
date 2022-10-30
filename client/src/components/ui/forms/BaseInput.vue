@@ -16,6 +16,7 @@
       :value="modelValue"
       :required="required"
       @input="updateInput"
+      @change="onChange"
       class="input__field"
     />
 </div>
@@ -39,6 +40,11 @@ defineProps({
   label: {
     type: String,
     required: true,
+  },
+  onChange: {
+    type: Function,
+    required: false,
+    default: () => {},
   },
   required: {
     type: Boolean,

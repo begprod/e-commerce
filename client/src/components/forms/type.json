@@ -8,7 +8,7 @@
       "id": "type",
       "type": "text",
       "label": "Type",
-      "name": "type",
+      "name": "name",
       "required": true
     }
   ],

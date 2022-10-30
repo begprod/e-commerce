@@ -11,6 +11,10 @@ const useProductsStore = defineStore('products', {
   }),
 
   actions: {
+    addProduct(payload) {
+      return ProductsServices.addProduct(payload);
+    },
+
     setProducts() {
       ProductsServices.getAllProducts()
         .then((response) => {

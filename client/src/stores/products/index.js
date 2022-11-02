@@ -15,6 +15,10 @@ const useProductsStore = defineStore('products', {
       return ProductsServices.addProduct(payload);
     },
 
+    getProduct(id) {
+      return ProductsServices.getProduct(id);
+    },
+
     setProducts() {
       ProductsServices.getAllProducts()
         .then((response) => {

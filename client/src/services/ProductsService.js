@@ -9,6 +9,10 @@ export default {
     return apiClient.get('/api/device');
   },
 
+  getProduct(id) {
+    return apiClient.get(`/api/device/${id}`);
+  },
+
   addType(type) {
     return apiClient.post('/api/type', type);
   },

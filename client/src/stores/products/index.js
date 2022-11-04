@@ -4,6 +4,7 @@ import ProductsServices from '@/services/ProductsService';
 const useProductsStore = defineStore('products', {
   state: () => ({
     products: null,
+    currentProduct: null,
     types: null,
     brands: null,
     currentBrand: null,
@@ -15,8 +16,11 @@ const useProductsStore = defineStore('products', {
       return ProductsServices.addProduct(payload);
     },
 
-    getProduct(id) {
-      return ProductsServices.getProduct(id);
+    async setCurrentProduct(id) {
+      await ProductsServices.getProduct(id)
+        .then((response) => {
+          this.currentProduct = response.data;
+        });
     },
 
     setProducts() {
@@ -59,6 +63,7 @@ const useProductsStore = defineStore('products', {
 
   getters: {
     getProducts: (state) => state.products,
+    getCurrentProduct: (state) => state.currentProduct,
     getTypes: (state) => state.types,
     getBrands: (state) => state.brands,
     getCurrentBrand: (state) => state.currentBrand,

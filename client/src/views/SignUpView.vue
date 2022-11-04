@@ -34,22 +34,15 @@
       />
       <router-link to="/login">Already have an account? Sign in →</router-link>
     </template>
-    <template
-      v-if="isError"
-      v-slot:message
-    >
-      {{ errorMessage }}
-    </template>
   </BaseFormWrapper>
 </template>
 
 <script setup>
 import jwtDecode from 'jwt-decode';
 import { useRouter } from 'vue-router';
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useMeta } from 'vue-meta';
 import useUserStore from '@/stores/user';
-import useCommonStore from '@/stores/common';
 import BaseFormWrapper from '@/components/ui/forms/BaseFormWrapper.vue';
 import BaseInput from '@/components/ui/forms/BaseInput.vue';
 import BaseButton from '@/components/ui/forms/BaseButton.vue';
@@ -65,9 +58,6 @@ const formData = ref({
   password: '',
   role: 'ADMIN',
 });
-
-const isError = computed(() => useCommonStore().isError);
-const errorMessage = computed(() => useCommonStore().errorMessages);
 
 const onSubmit = () => {
   useUserStore().signUp(formData.value)

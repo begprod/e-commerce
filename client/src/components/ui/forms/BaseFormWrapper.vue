@@ -12,9 +12,6 @@
     <div class="form__controls">
       <slot name="controls"/>
     </div>
-    <div class="form__message">
-      <slot name="message"></slot>
-    </div>
   </form>
 </template>
 
@@ -47,11 +44,6 @@ const onSubmit = (event) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.form__message {
-  margin-top: 30px;
-  text-align: center;
 }
 
 :deep(h2) {

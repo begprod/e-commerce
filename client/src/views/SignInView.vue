@@ -35,22 +35,15 @@
       or
       <router-link to="/signup">Sign up</router-link>
     </template>
-    <template
-      v-if="isError"
-      v-slot:message
-    >
-      {{ errorMessage }}
-    </template>
   </BaseFormWrapper>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useMeta } from 'vue-meta';
 import jwtDecode from 'jwt-decode';
 import useUserStore from '@/stores/user';
-import useCommonStore from '@/stores/common';
 import BaseFormWrapper from '@/components/ui/forms/BaseFormWrapper.vue';
 import BaseInput from '@/components/ui/forms/BaseInput.vue';
 import BaseButton from '@/components/ui/forms/BaseButton.vue';
@@ -60,9 +53,6 @@ useMeta({
 });
 
 const router = useRouter();
-
-const isError = computed(() => useCommonStore().isError);
-const errorMessage = computed(() => useCommonStore().errorMessages);
 
 const formData = ref({
   email: '',

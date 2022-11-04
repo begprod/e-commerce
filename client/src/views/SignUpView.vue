@@ -41,15 +41,10 @@
 import jwtDecode from 'jwt-decode';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
-import { useMeta } from 'vue-meta';
 import useUserStore from '@/stores/user';
 import BaseFormWrapper from '@/components/ui/forms/BaseFormWrapper.vue';
 import BaseInput from '@/components/ui/forms/BaseInput.vue';
 import BaseButton from '@/components/ui/forms/BaseButton.vue';
-
-useMeta({
-  title: 'Sign up',
-});
 
 const router = useRouter();
 

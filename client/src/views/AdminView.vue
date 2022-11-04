@@ -114,17 +114,12 @@ import {
   reactive,
   onBeforeMount,
 } from 'vue';
-import { useMeta } from 'vue-meta';
 import useCommonStore from '@/stores/common';
 import useProductsStore from '@/stores/products';
 import BaseFormWrapper from '@/components/ui/forms/BaseFormWrapper.vue';
 import typeFormData from '@/components/forms/type.json';
 import brandFormData from '@/components/forms/brand.json';
 import deviceFormData from '@/components/forms/device.json';
-
-useMeta({
-  title: 'Admin panel',
-});
 
 onBeforeMount(() => {
   useProductsStore().setTypes();

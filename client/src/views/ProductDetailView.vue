@@ -29,15 +29,10 @@
 <script setup>
 import { computed, reactive, onBeforeMount } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useMeta } from 'vue-meta';
 import useUserStore from '@/stores/user';
 import useProductsStore from '@/stores/products';
 import useCommonStore from '@/stores/common';
 import BaseButton from '@/components/ui/forms/BaseButton.vue';
-
-useMeta({
-  title: 'Product Detail',
-});
 
 const router = useRouter();
 const route = useRoute();
@@ -57,6 +52,7 @@ onBeforeMount(async () => {
     });
 
   useCommonStore().setIsLoading(false);
+  document.title = `${product.name} | VueShop`;
 });
 </script>
 

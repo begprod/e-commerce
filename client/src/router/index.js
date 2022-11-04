@@ -14,12 +14,16 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
+    meta: {
+      title: 'Home',
+    },
   },
   {
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '../views/SignInView.vue'),
     meta: {
+      title: 'Sign in',
       middleware: [
         guest,
       ],
@@ -30,6 +34,7 @@ const routes = [
     name: 'signup',
     component: () => import(/* webpackChunkName: "signup" */ '../views/SignUpView.vue'),
     meta: {
+      title: 'Sign up',
       middleware: [
         guest,
       ],
@@ -55,6 +60,7 @@ const routes = [
     name: 'admin',
     component: () => import(/* webpackChunkName: "admin" */ '../views/AdminView.vue'),
     meta: {
+      title: 'Admin Panel',
       middleware: [
         auth,
       ],
@@ -80,6 +86,8 @@ router.beforeEach((to, from, next) => {
     next,
     useUserStore,
   };
+
+  document.title = `${to.meta.title ? to.meta.title : 'Hello'}  | Vue 3 Ecommerce`;
 
   useUserStore().check()
     .catch((error) => {

@@ -50,17 +50,12 @@
 
 <script setup>
 import { onBeforeMount, computed } from 'vue';
-import { useMeta } from 'vue-meta';
 import useCommonStore from '@/stores/common';
 import useProductsStore from '@/stores/products';
 import BaseBar from '@/components/ui/BaseBar.vue';
 import BaseRadioButton from '@/components/ui/forms/BaseRadioButton.vue';
 import BaseCardGrid from '@/components/ui/BaseCardGrid.vue';
 import BaseCard from '@/components/ui/BaseCard.vue';
-
-useMeta({
-  title: 'HomePage',
-});
 
 const isLoading = computed(() => useCommonStore().isLoading);
 

@@ -17,7 +17,7 @@
         <div>Hello,{{ currentUser.email }}</div>
         <router-link
           to="/cart/1">
-          Cart
+          Cart({{ cart.length }})
         </router-link>
         <BaseButton
           text="Logout"
@@ -41,6 +41,7 @@ const router = useRouter();
 
 const currentUser = computed(() => useUserStore().currentUser);
 const isAuthenticated = computed(() => useUserStore().isAuthenticated);
+const cart = computed(() => useUserStore().currentCart);
 
 const logout = () => {
   router.push({ name: 'home' })

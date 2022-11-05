@@ -13,6 +13,10 @@ export default {
     return apiClient.post(`/api/user/add-to-cart/${userId}`, payload);
   },
 
+  getCart(userId) {
+    return apiClient.get(`/api/user/cart/${userId}`);
+  },
+
   checkAuth() {
     return apiClient.get('/api/user/auth');
   },

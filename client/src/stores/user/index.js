@@ -6,6 +6,7 @@ const useUserStore = defineStore('user', {
   state: () => ({
     user: {},
     authenticated: false,
+    cart: [],
   }),
 
   actions: {
@@ -17,17 +18,6 @@ const useUserStore = defineStore('user', {
       return UserServices.signIn(payload);
     },
 
-    async check() {
-      await UserServices.checkAuth()
-        .then((response) => {
-          const { token } = response.data;
-          const decodedToken = jwtDecode(token);
-
-          this.setCurrentUser(decodedToken);
-          this.setAuthenticated(true);
-        });
-    },
-
     setCurrentUser(user) {
       this.user = user;
     },
@@ -36,8 +26,26 @@ const useUserStore = defineStore('user', {
       this.authenticated = authenticated;
     },
 
+    async setCart(userId) {
+      const cart = await UserServices.getCart(userId);
+
+      this.cart = cart.data;
+    },
+
     addToCart(userId, payload) {
       return UserServices.addToCart(userId, payload);
+    },
+
+    async check() {
+      await UserServices.checkAuth()
+        .then((response) => {
+          const { token } = response.data;
+          const decodedToken = jwtDecode(token);
+
+          this.setCurrentUser(decodedToken);
+          this.setAuthenticated(true);
+          this.setCart(this.user.id);
+        });
     },
   },
 
@@ -45,6 +53,7 @@ const useUserStore = defineStore('user', {
     currentUser: (state) => state.user,
     isAdmin: (state) => state.user.role === 'ADMIN',
     isAuthenticated: (state) => state.authenticated,
+    currentCart: (state) => state.cart,
   },
 });
 

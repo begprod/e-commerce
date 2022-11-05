@@ -15,9 +15,14 @@ class CartController {
   async addToCart(req, res) {
     const { userId } = req.params;
     const { deviceId } = req.body;
-    const cart = await Cart.findOne({
+    let cart = await Cart.findOne({
       where: { userId }
     });
+
+    if (cart === null) {
+      cart = await Cart.create({ userId });
+    }
+
     const cartDevice = await CartDevice.create({ deviceId, cartId: cart.id });
 
     return res.json(cartDevice);

@@ -35,6 +35,10 @@ const useUserStore = defineStore('user', {
     setAuthenticated(authenticated) {
       this.authenticated = authenticated;
     },
+
+    addToCart(userId, payload) {
+      return UserServices.addToCart(userId, payload);
+    },
   },
 
   getters: {

@@ -15,6 +15,9 @@
         <BaseButton
           v-if="isAuth"
           text="Add to cart"
+          @click="addToCart(useUserStore().currentUser.id, {
+            deviceId: product.id,
+          })"
         />
         <router-link
           v-else
@@ -54,6 +57,14 @@ onBeforeMount(async () => {
   useCommonStore().setIsLoading(false);
   document.title = `${product.name} | VueShop`;
 });
+
+const addToCart = (userId, payload) => {
+  useUserStore().addToCart(userId, payload)
+    .then(() => {
+      useCommonStore().setToastMessage('Added to cart');
+      useCommonStore().setToastMessageIsVisible(true);
+    });
+};
 </script>
 
 <style lang="postcss" scoped>

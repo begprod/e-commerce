@@ -9,6 +9,10 @@ export default {
     return apiClient.post('/api/user/login', payload);
   },
 
+  addToCart(userId, payload) {
+    return apiClient.post(`/api/user/add-to-cart/${userId}`, payload);
+  },
+
   checkAuth() {
     return apiClient.get('/api/user/auth');
   },

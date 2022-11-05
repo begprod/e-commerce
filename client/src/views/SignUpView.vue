@@ -51,7 +51,7 @@ const router = useRouter();
 const formData = ref({
   email: '',
   password: '',
-  role: 'ADMIN',
+  role: 'USER',
 });
 
 const onSubmit = () => {

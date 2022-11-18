@@ -13,6 +13,7 @@
     "core-js": "^3.8.3",
     "jwt-decode": "^3.1.2",
     "pinia": "^2.0.21",
+    "pinia-plugin-persistedstate": "^2.3.0",
     "postcss-html": "^1.5.0",
     "postcss-syntax": "^0.36.2",
     "stylelint": "^14.11.0",

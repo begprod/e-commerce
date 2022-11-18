@@ -69,6 +69,8 @@ const useProductsStore = defineStore('products', {
     getCurrentBrand: (state) => state.currentBrand,
     getCurrentType: (state) => state.currentType,
   },
+
+  persist: true,
 });
 
 export default useProductsStore;

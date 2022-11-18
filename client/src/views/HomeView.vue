@@ -49,7 +49,7 @@
 </template>
 
 <script setup>
-import { onBeforeMount, computed } from 'vue';
+import { computed } from 'vue';
 import useCommonStore from '@/stores/common';
 import useProductsStore from '@/stores/products';
 import BaseBar from '@/components/ui/BaseBar.vue';
@@ -65,14 +65,4 @@ const brands = computed(() => useProductsStore().brands);
 
 const { setCurrentType } = useProductsStore();
 const { setCurrentBrand } = useProductsStore();
-
-onBeforeMount(async () => {
-  useCommonStore().setIsLoading(true);
-
-  await useProductsStore().setProducts();
-  await useProductsStore().setTypes();
-  await useProductsStore().setBrands();
-
-  useCommonStore().setIsLoading(false);
-});
 </script>

@@ -50,6 +50,7 @@ const routes = [
     name: 'cart',
     component: () => import(/* webpackChunkName: "cart" */ '../views/CartView.vue'),
     meta: {
+      title: 'Cart',
       middleware: [
         auth,
       ],
@@ -91,7 +92,10 @@ router.beforeEach((to, from, next) => {
 
   useUserStore().check()
     .catch((error) => {
-      console.log(error);
+      if (error.response.status === 401) {
+        useUserStore().setCurrentUser({});
+        useUserStore().setAuthenticated(false);
+      }
     })
     .finally(() => {
       if (middleware) {
